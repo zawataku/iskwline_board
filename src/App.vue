@@ -1,26 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <ISKW_Main></ISKW_Main>
+  <ISKW_Input></ISKW_Input>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ISKW_Main from './components/ISKW_Main.vue'
+import ISKW_Input from './components/ISKW_Input.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ISKW_Main,
+    ISKW_Input
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
