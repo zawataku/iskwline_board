@@ -8,19 +8,27 @@
         <canvas class="canvas" ref="canvas" width="1280" height="720"></canvas>
         <img class="output-image" ref="outputImage" :src=imageDataUrl alt="Generated Image" />
       </div>
+
       <div class="forms">
         <p>右クリックメニュー「名前を付けて画像を保存」またはロングタップで保存できます</p>
-        <h2>駅の設定</h2>
-        <input class="form-control my-2 mx-auto" v-model="text0" placeholder="Type Here" />
-        <input class="form-control my-2 mx-auto" v-model="text1" placeholder="Type Here" />
-        <input class="form-control my-2 mx-auto" v-model="text2" placeholder="Type Here" />
+        <h3 class="mt-4">駅の設定</h3>
+        <input class="form-control my-2 mx-auto" v-model="text0" placeholder="駅名（ひらがな）" />
+        <input class="form-control my-2 mx-auto" v-model="text1" placeholder="駅名（漢字）" />
+        <input class="form-control my-2 mx-auto" v-model="text2" placeholder="駅名（ローマ字）" />
       </div>
+
       <div class="forms">
-        <h2>一つ前の駅の設定</h2>
-        <input class="form-control my-2 mx-auto" v-model="text0" placeholder="Type Here" />
-        <input class="form-control my-2 mx-auto" v-model="text1" placeholder="Type Here" />
-        <input class="form-control my-2 mx-auto" v-model="text2" placeholder="Type Here" />
+        <h3 class="mt-4">前の駅の設定</h3>
+        <input class="form-control my-2 mx-auto" v-model="text3" placeholder="駅名（ひらがな）" />
+        <input class="form-control my-2 mx-auto" v-model="text4" placeholder="駅名（ローマ字）" />
       </div>
+
+      <div class="forms">
+        <h3 class="mt-4">次の駅の設定</h3>
+        <input class="form-control my-2 mx-auto" v-model="text5" placeholder="駅名（ひらがな）" />
+        <input class="form-control my-2 mx-auto" v-model="text6" placeholder="駅名（ローマ字）" />
+      </div>
+
       <div class="footer mt-5">
         <p>Version 1.0.0</p>
         <p>Licensed under the MIT License</p>
@@ -36,9 +44,13 @@ import html2canvas from 'html2canvas';
 export default {
   data() {
     return {
-      text0: '',
-      text1: '',
-      text2: '',
+      text0: 'ののいちこうだいまえ',
+      text1: '野々市工大前',
+      text2: 'Nonoichi kōdaimae',
+      text3: 'まがえ',
+      text4: 'Magae',
+      text5: 'ののいち',
+      text6: 'Nonoichi',
       image: null,
       fontsLoaded: false,
       imageDataUrl: '/images/loading.webp'
@@ -52,6 +64,18 @@ export default {
       this.drawText();
     },
     text2() {
+      this.drawText();
+    },
+    text3() {
+      this.drawText();
+    },
+    text4() {
+      this.drawText();
+    },
+    text5() {
+      this.drawText();
+    },
+    text6() {
       this.drawText();
     },
   },
@@ -97,22 +121,47 @@ export default {
       const x = canvas.width / 2; // キャンバスの幅の中央
 
       // テキスト0を描画
-      ctx.font = '22px Font_0'; // ここでフォントを変更
-      ctx.fillStyle = 'white';
-      const y0 = 278;
+      ctx.font = '125px Font_0'; // ここでフォントを変更
+      ctx.fillStyle = 'black';
+      const y0 = 200;
       ctx.fillText(this.text0, x, y0); // テキストを描画
 
       // テキスト1を描画
-      ctx.font = '122px Font_0';
+      ctx.font = '80px Font_0';
       ctx.fillStyle = 'black';
-      const y1 = 453;
+      const y1 = 350;
       ctx.fillText(this.text1, x, y1); // テキストを描画
 
       // テキスト2を描画
-      ctx.font = '40px Font_0'; // ここでフォントを変更
-      ctx.fillStyle = '#79C4B5';
-      const y2 = 550;
+      ctx.font = '60px Font_0'; // ここでフォントを変更
+      ctx.fillStyle = 'white';
+      const y2 = 470;
       ctx.fillText(this.text2, x, y2); // テキストを描画
+
+      // テキスト3を描画
+      ctx.font = '60px Font_0'; // ここでフォントを変更
+      ctx.fillStyle = 'black';
+      const y3 = 600;
+      const x2 = 200;
+      ctx.fillText(this.text3, x2, y3); // テキストを描画
+
+      // テキスト4を描画
+      ctx.font = '40px Font_0'; // ここでフォントを変更
+      ctx.fillStyle = 'black';
+      const y4 = 660;
+      ctx.fillText(this.text4, x2, y4); // テキストを描画
+
+      // テキスト5を描画
+      ctx.font = '60px Font_0'; // ここでフォントを変更
+      ctx.fillStyle = 'black';
+      const x3 = 1020;
+      ctx.fillText(this.text5, x3, y3); // テキストを描画
+
+      // テキスト6を描画
+      ctx.font = '40px Font_0'; // ここでフォントを変更
+      ctx.fillStyle = 'black';
+      const y6 = 660;
+      ctx.fillText(this.text6, x3, y4); // テキストを描画
 
       this.imageDataUrl = canvas.toDataURL('image/png');
     },
